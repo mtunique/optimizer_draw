@@ -180,7 +180,7 @@ class App extends React.Component {
       for(var k in contentData)  {
         graph.updateItem(k, { 
           style: {
-            fill: taskToColor[contentData[k].split('::', 1)]
+            fill: taskToColor[contentData[k].split('\n', 2)[1].split('::', 1)]
           }, 
           label: contentData[k]});
         console.log(taskToColor[contentData[k].split('::', 1)]);
@@ -216,13 +216,15 @@ class App extends React.Component {
     var tmp = [];
     const items = []
 
+    var count = 0;
+
     new_lines.forEach(l => {
       if (l.trim().length === 0 || l.startsWith('id:')) {
         if (tmp.length > 0) {
           const ll = [];
           ll.push(tmp[0]);
-          ll.push(tmp.slice(1, tmp.length).join('\n'));
-
+          ll.push(count + ":\n" + tmp.slice(1, tmp.length).join('\n'));
+          count ++;
           items.push(ll); 
         }
         tmp = [];
