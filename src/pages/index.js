@@ -36,7 +36,7 @@ class App extends React.Component {
         height: 500,
         defaultNode: {
           shape: 'rect',
-          size: [220, 80],
+          size: [250, 80],
           labelCfg: {
             style: {
               x: -100, 
@@ -67,7 +67,7 @@ class App extends React.Component {
           const result = Hierarchy.compactBox(data, {
             direction: 'TB', // H / V / LR / RL / TB / BT
             getWidth(d) {
-              return 220 + PEM * 1.6;
+              return 250 + PEM * 1.6;
             },
             getHGap(d) {
               return PEM;
