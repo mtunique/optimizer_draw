@@ -219,20 +219,23 @@ class App extends React.Component {
     var count = 0;
 
     new_lines.forEach(l => {
-      if (l.trim().length === 0 || l.startsWith('id:')) {
+      if (l.startsWith('id:')) {
         if (tmp.length > 0) {
           const ll = [];
           ll.push(tmp[0]);
           ll.push(count + ":\n" + tmp.slice(1, tmp.length).join('\n'));
           count ++;
           items.push(ll); 
+          tmp = [];
         }
-        tmp = [];
+
         if (l.trim().length > 0) {
-          tmp.push(l)
+          tmp.push(l);
         }
       } else if (l) {
-        tmp.push(l)
+        if (l.trim().length > 0) {
+          tmp.push(l);
+        }
       }
     })
 
